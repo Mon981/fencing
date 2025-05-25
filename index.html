@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title></title>
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
+    />
+    <link rel="stylesheet" href="stylesheet.css" />
+    <link rel="manifest" href="site.webmanifest" />
+    <script>
+      if ("serviceWorker" in navigator) {
+        navigator.serviceWorker
+          .register("sw.js")
+          .then((reg) => console.log("Service Worker registrado:", reg))
+          .catch((err) =>
+            console.error("Error al registrar el Service Worker:", err)
+          );
+      }
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&family=Special+Gothic+Condensed+One&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&family=Special+Gothic+Condensed+One&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+  </head>
+  <body>
+    <div class="cards yellow-cards" id="yellow-card"></div>
+    <div class="cards red-cards" id="red-card"></div>
+    <div class="cards black-cards" id="black-card"></div>
+    <div id="main">
+      <div class="modal">
+        <div class="modal-content">
+          <h2>CONFIGURATION</h2>
+
+          <div class="option-group">
+            <label>Rounds:</label>
+            <div class="value-selector">
+              <button class="decrease">-</button>
+              <span class="value" id="rounds-val">1</span>
+              <button class="increase">+</button>
+            </div>
+          </div>
+
+          <div class="option-group">
+            <label>Minutes:</label>
+            <div class="value-selector">
+              <button class="decrease">-</button>
+              <span class="value" id="minutes-val">3</span>
+              <button class="increase">+</button>
+            </div>
+          </div>
+          <div class="option-group">
+            <label>Points:</label>
+            <div class="value-selector">
+              <button class="decrease">-</button>
+              <span class="value" id="points-val">5</span>
+              <button class="increase">+</button>
+            </div>
+          </div>
+          <button id="save-conf">SAVE</button>
+        </div>
+      </div>
+      <div id="player-selector">
+        <div class="player-selector-content">
+          <h3>Choose the player to penalize</h3>
+          <button class="player-buttons" id="player-a">Player A</button>
+          <button class="player-buttons" id="player-b">Player B</button>
+          <button id="cancel-penalty">CANCEL</button>
+          <button id="confirm-penalty">CONFIRM</button>
+        </div>
+      </div>
+      <div id="content">
+        <table id="names-points">
+          <tr id="names">
+            <td>
+              <p class="p-names" id="pa-name">PLAYER A</p>
+            </td>
+            <td>
+              <p class="p-names" id="pb-name">PLAYER B</p>
+            </td>
+          </tr>
+          <tr id="cards-tr">
+            <td class="cards-td">
+              <div class="yellow-cards cards" id="yellow-pcard-a">P</div>
+              <div class="yellow-cards cards" id="yellow-card-a"></div>
+              <div class="red-cards cards" id="red-pcard-a">P</div>
+              <div class="red-cards cards" id="red-card-a"></div>
+              <div class="black-cards cards" id="black-pcard-a"></div>
+              <div class="priority-cards cards" id="priority-a">P</div>
+            </td>
+            <td class="cards-td">
+              <div class="yellow-cards cards" id="yellow-pcard-b">P</div>
+              <div class="yellow-cards cards" id="yellow-card-b"></div>
+              <div class="red-cards cards" id="red-pcard-b">P</div>
+              <div class="red-cards cards" id="red-card-b"></div>
+              <div class="black-cards cards" id="black-pcard-b"></div>
+              <div class="priority-cards cards" id="priority-b">P</div>
+            </td>
+          </tr>
+          <tr id="points">
+            <td id="pa-points">0</td>
+            <td id="pb-points">0</td>
+          </tr>
+        </table>
+        <table id="plus-minus-btns">
+          <tr id="pm-btns">
+            <td class="add-btns border" id="pa-plus">+</td>
+            <td class="decrease-btns border" id="pa-minus">-</td>
+            <td class="add-btns border" id="pb-plus">+</td>
+            <td class="decrease-btns border" id="pb-minus">-</td>
+          </tr>
+        </table>
+        <div id="timer">0 : 00</div>
+        <div id="pass-timer">01 : 00 : 000</div>
+        <div class="border" id="start-stop-button">START</div>
+        <div id="to-hide">
+          <div id="reset-priority-table">
+            <div class="border" id="reset-btn">RESET</div>
+            <div class="border" id="priority-btn">PRIORITY</div>
+          </div>
+          <div class="cards-btns">
+            <div class="fa-solid fa-gear" id="modal-conf"></div>
+            <div
+              class="card-btn yellow-cards a-cards"
+              id="yellow-penalty"
+            ></div>
+            <div class="card-btn red-cards a-cards" id="red-penalty"></div>
+            <div class="card-btn black-cards a-cards" id="black-penalty"></div>
+          </div>
+        </div>
+        <div id="custom-alert" class="modal" style="display: none">
+          <div class="modal-content">
+            <h3 id="alert-message">Mensaje</h3>
+            <button id="alert-ok">OK</button>
+          </div>
+        </div>
+        <div id="custom-prompt" class="modal" style="display: none">
+          <div class="modal-content">
+            <h3 id="prompt-message"></h3>
+            <input id="prompt-input" type="text" />
+            <div>
+              <button id="prompt-ok">SAVE</button>
+              <button id="prompt-cancel">Cancel</button>
+            </div>
+          </div>
+        </div>
+        <div id="modalAsaltos" class="modal" style="display: none">
+          <div class="modal-content">
+            <h2>Historial de Asaltos</h2>
+            <table id="tablaAsaltos">
+              <thead>
+                <tr>
+                  <th>P_A</th>
+                  <th>Puntos</th>
+                  <th>P_B</th>
+                  <th>Puntos</th>
+                  <th>Ganador</th>
+                </tr>
+              </thead>
+              <tbody></tbody>
+            </table>
+            <button id="prompt-close" onclick="cerrarModal()">CLOSE</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="script.js" async defer></script>
+  </body>
+</html>
