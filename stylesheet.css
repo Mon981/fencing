@@ -1,0 +1,344 @@
+* {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+  background-color: rgb(100, 100, 100);
+  color: white;
+  overflow-y: hidden;
+  justify-content: center;
+  align-items: center;
+  font-size: 16px;
+  font-family: "Special Gothic Condensed One";
+  font-weight: 400;
+}
+#content {
+  margin-top: 2vh;
+}
+
+#names-points {
+  width: 100%;
+  text-align: center;
+  border-collapse: collapse;
+}
+
+#names,
+#points {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+  text-align: center;
+}
+#points {
+  height: 18vh;
+}
+
+#cards-tr {
+  width: 100%;
+  height: 4vh;
+  display: flex;
+  justify-content: space-around;
+}
+
+.cards-td {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.cards-td div {
+  width: 2.6vh;
+  height: 2.6vh;
+  border-radius: 50px;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+}
+.yellow-cards {
+  background-color: #ffd700;
+}
+.red-cards {
+  background-color: #cd2200;
+}
+.black-cards {
+  background-color: rgb(18, 18, 20);
+}
+.priority-cards {
+  background-color: #000080;
+  color: white;
+  font-weight: bold;
+}
+#reset-priority-table {
+  display: flex;
+  justify-content: center;
+}
+#reset-btn,
+#priority-btn {
+  width: 100%;
+  height: 8vh;
+  display: flex;
+  text-align: center;
+  font-size: 1.5rem;
+  margin: 1vh;
+}
+
+#yellow-card {
+  height: 100vh;
+  display: none;
+}
+#red-card {
+  height: 100vh;
+  display: none;
+}
+#black-card {
+  height: 100vh;
+  display: none;
+}
+.cards-btns {
+  display: flex;
+  justify-content: space-evenly;
+}
+.card-btn {
+  width: 100%;
+  height: 8vh;
+  text-align: center;
+  border-radius: 10px;
+  margin: 3px;
+}
+
+#plus-minus-btns {
+  height: 12vh;
+}
+#timer {
+  display: flex;
+  height: 12vh;
+  font-size: 5rem;
+  justify-content: center;
+  align-items: center;
+  margin-top: 1vh;
+}
+#pass-timer {
+  display: flex;
+  height: 5vh;
+  font-size: 1.5rem;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 3vh;
+}
+#start-stop-button {
+  display: flex;
+  height: 15vh;
+  font-size: 4rem;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(70, 70, 70);
+  margin: 1vh;
+  transition: height 0.2s ease;
+}
+#pa-points,
+#pb-points {
+  height: 21vh;
+  align-items: center;
+  font-size: 7rem;
+  margin-bottom: 3vh;
+}
+.p-names {
+  font-size: 1.8rem;
+}
+.add-btns,
+.decrease-btns {
+  width: 21vw;
+  height: 10vh;
+  border-radius: 15px;
+  font-size: 4rem;
+  margin: 0vw 1vw;
+  font-family: "Source Code Pro";
+}
+
+#plus-minus-btns,
+#pm-btns,
+.add-btns,
+.decrease-btns {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.1s ease;
+}
+.add-btns:active,
+.decrease-btns:active,
+#reset-btn:active,
+#priority-btn:active {
+  transform: scale(0.95);
+}
+.border {
+  border: 4px solid rgb(200, 200, 200);
+  border-radius: 15px;
+}
+#yellow-pcard-a,
+#yellow-pcard-b {
+  color: black;
+}
+.modal,
+#player-selector {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+.modal-content {
+  padding: 2rem;
+  border-radius: 1.5rem;
+  width: 90%;
+  max-width: 400px;
+  text-align: center;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+}
+
+h2 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+h3 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.option-group {
+  margin-bottom: 1rem;
+}
+
+label {
+  display: block;
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.value-selector {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.value-selector button {
+  font-size: 2rem;
+  padding: 0.5rem 1.2rem;
+  border: 4px solid rgb(200, 200, 200);
+  border-radius: 15px;
+  color: white;
+  cursor: pointer;
+  transition: transform 0.1s ease;
+  font-size: 3rem;
+}
+
+.value-selector button:active,
+.player-selector-content button:active {
+  transform: scale(0.95);
+}
+
+.value-selector span {
+  font-size: 2.5rem;
+  min-width: 2rem;
+  display: inline-block;
+}
+
+#save-conf {
+  margin-top: 1rem;
+  font-size: 1.5rem;
+  padding: 0.8rem 2rem;
+  border: 4px solid rgb(200, 200, 200);
+  border-radius: 15px;
+  color: white;
+  border-radius: 0.5rem;
+  cursor: pointer;
+}
+
+.player-buttons,
+#confirm-penalty,
+#cancel-penalty {
+  font-size: 2rem;
+  padding: 1rem;
+  border: 4px solid rgb(200, 200, 200);
+  border-radius: 15px;
+  color: white;
+  cursor: pointer;
+  transition: transform 0.1s ease;
+  font-size: 1.5rem;
+  width: 45%;
+  margin: 7vw 1vw;
+}
+
+.player-selector-content {
+  padding: 2rem;
+  border-radius: 1.5rem;
+  width: 100%;
+  max-width: 400px;
+  text-align: center;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+}
+#confirm-penalty,
+#cancel-penalty {
+  background-color: rgb(70, 70, 70);
+}
+
+.selected {
+  border: 4px solid rgb(0, 69, 206);
+}
+#cancel-penalty {
+  border: 4px solid rgb(160, 0, 0);
+}
+#confirm-penalty {
+  border: 4px solid rgb(37, 160, 0);
+}
+#modal-conf {
+  display: flex;
+  width: 100%;
+  height: 8vh;
+  text-align: center;
+  border-radius: 10px;
+  margin: 3px;
+  font-size: 2.5rem;
+  color: rgb(200, 200, 200);
+  transition: transform 0.1s ease;
+}
+
+input {
+  border: 3px solid rgb(200, 200, 200);
+  border-radius: 5px;
+  width: 90%;
+  height: 5vh;
+  margin-bottom: 2vh;
+  padding-left: 4%;
+  font-size: 1.7rem;
+  outline: none;
+}
+
+#prompt-ok,
+#prompt-cancel,
+#alert-ok {
+  border: 3px solid rgb(200, 200, 200);
+  border-radius: 5px;
+  width: 40%;
+  height: 6vh;
+  font-size: 2rem;
+  margin: 2%;
+}
+
+.cards-btns > div {
+  flex: 1;
+  height: 8vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2.5rem;
+  margin: 3px;
+  border-radius: 10px;
+  color: rgb(200, 200, 200);
+}
